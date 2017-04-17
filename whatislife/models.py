@@ -9,7 +9,7 @@ from django.utils import timezone
 
 class Post(models.Model):
     entry_title = models.CharField(max_length = 200)
-    post_entry = models.CharField(max_length=3000)
+    post_entry = models.TextField()
     pub_date = models.DateTimeField('date published')
     def __str__(self):
         return self.entry_title
