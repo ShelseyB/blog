@@ -16,7 +16,7 @@ class Post(models.Model):
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
     
-class Comments(models.Model):
+class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     comment_entry = models.CharField(max_length = 1000)
     pub_date = models.DateTimeField('date published')

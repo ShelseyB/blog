@@ -1,7 +1,10 @@
+<h1>What is Life?</h1>
+<h2>A blog by Shelsey Brinkerhoff</h2>
+
 {% if latest_entry_list %}
     <ul>
     {% for post in latest_entry_list %}
-        <li><a href="/whatislife/{{ post.id }}/">{{ post.entry_title }}</a></li>
+        <li><a href="{% url 'detail' post.id %}">{{ post.entry_title }}</a></li>
     {% endfor %}
     </ul>
 {% else %}
