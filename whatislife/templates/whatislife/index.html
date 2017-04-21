@@ -1,6 +1,8 @@
 <h1>What is Life?</h1>
 <h2>A blog by Shelsey Brinkerhoff</h2>
 
+<p>Some things just shouldn't happen. That's when you say "What is life?!"</p>
+
 {% if latest_entry_list %}
     <ul>
     {% for post in latest_entry_list %}
@@ -10,3 +12,5 @@
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+<p>You're viewing this page at {{ post.pub_date|date:"g:i a" }} </p>

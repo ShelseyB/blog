@@ -11,6 +11,7 @@ class Post(models.Model):
     entry_title = models.CharField(max_length = 200)
     post_entry = models.TextField()
     pub_date = models.DateTimeField('date published')
+    
     def __str__(self):
         return self.entry_title
     def was_published_recently(self):
@@ -20,6 +21,7 @@ class Comment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     comment_entry = models.CharField(max_length = 1000)
     pub_date = models.DateTimeField('date published')
+    comment_author = models.CharField(max_length = 200)
     def __str__(self):
         return self.comment_entry
     def was_published_recently(self):
