@@ -8,3 +8,11 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+
+<form action="{% url 'whatislife:new_comment' entry.id %}" method="post">
+    <label for="comment_author">Author name: </label>
+    <input id="comment_author" type="text" name="comment_author">
+    <label for="comment_entry">Type your comment here:</label>
+    <input id="comment_entry" type="text" name = "comment_entry">
+    <input type="submit" value="OK">
+</form>

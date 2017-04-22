@@ -26,3 +26,12 @@ class Comment(models.Model):
         return self.comment_entry
     def was_published_recently(self):
         return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+    def create_comment(self, cls, post, comment_entry, pub_date, comment_author):
+        #book = cls(title=title)
+        comment = cls (post=post, comment_entry=comment_entry, pub_date=pub_date, comment_author=comment_author)
+        return comment
+        
+        
+
+        
+        
