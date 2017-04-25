@@ -1,0 +1,15 @@
+h1 {
+    color: rgb(242, 87, 82);
+    text-align: center;
+}
+
+body {
+    background: purple url("images/pexels-photo.jpg") no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+p {
+    color: rgb(242, 87, 82);
+    background-color: white;
+}

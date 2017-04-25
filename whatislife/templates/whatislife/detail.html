@@ -1,3 +1,7 @@
+{% load staticfiles %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'whatislife/style.css' %}" />
+
 <h1>{{ entry.entry_title }}</h1>
 <p>Posted at {{ entry.pub_date}}</p>
 <p>{{entry.post_entry}}</p>
@@ -10,6 +14,7 @@
 {% endfor %}
 
 <form action="{% url 'whatislife:new_comment' entry.id %}" method="post">
+    {% csrf_token %}
     <label for="comment_author">Author name: </label>
     <input id="comment_author" type="text" name="comment_author">
     <label for="comment_entry">Type your comment here:</label>

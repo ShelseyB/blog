@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Post, Comment
 from django.template import loader
+from django.core.urlresolvers import reverse
 
 
 # Create your views here.
@@ -29,5 +30,6 @@ def new_comment(request, entry_id):
         })
     selected_choice.new_comment(selected_choice, selected_choice.post, selected_choice.comment_entry, selected_choice.pub_date, selected_choice.comment_author)
     selected_choice.save()
-    return render(request, 'whatislife/detail.html', {'entry': post})
+    #return render(request, "whatislife/detail.html")
+    return HttpResponseRedirect(reverse('whatislife:new_comment', args=(post.id)))
     
