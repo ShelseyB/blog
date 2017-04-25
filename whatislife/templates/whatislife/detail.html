@@ -5,6 +5,10 @@
 <h1>{{ entry.entry_title }}</h1>
 <p>Posted at {{ entry.pub_date}}</p>
 <p>{{entry.post_entry}}</p>
+
+
+<div id = "comments">
+    <h3>Comments for "{{ entry.entry_title }}":</h3>
 {% for c in entry.comment_set.all %}
     <p><b>{{c.comment_author}}</b></p>
     <p>Published: [{{c.pub_date}}</p>
@@ -12,6 +16,8 @@
 {% empty %}
     <p>No comments here yet :(</p>
 {% endfor %}
+
+</div>
 
 <form action="{% url 'whatislife:new_comment' entry.id %}" method="post">
     {% csrf_token %}
