@@ -3,6 +3,9 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from .models import Post, Comment
 from django.template import loader
 from django.core.urlresolvers import reverse
+import time
+from django.db import models
+from datetime import datetime
 
 
 # Create your views here.
@@ -20,16 +23,19 @@ def detail(request, entry_id):
     
 def new_comment(request, entry_id):
     post = get_object_or_404(Post, pk=entry_id)
-    try:
-        selected_choice = post.comment_set.get(pk=request.POST['choice'])
-    except (KeyError, Comment.DoesNotExist):
-        # Redisplay the question voting form.
-        return render(request, 'whatislife/detail.html', {
-            'post': post,
-            'error_message': "You didn't fill out the form.",
-        })
-    selected_choice.new_comment(selected_choice, selected_choice.post, selected_choice.comment_entry, selected_choice.pub_date, selected_choice.comment_author)
-    selected_choice.save()
+    # try:
+    #     pk=request.POST['comment_author']
+    #     selected_choice = post.comment_set.get(pk)
+    # except (KeyError, Comment.DoesNotExist):
+    #     return render(request, 'whatislife/detail.html', {
+    #         'post': post,
+    #         'error_message': "You didn't fill out the form."
+    #     })
+    
+    comment = Comment.objects.create_comment(post, request.POST['comment_entry'], request.POST['comment_author'])
+    #comment = cls (post=post, comment_entry=comment_entry, pub_date=pub_date, comment_author=comment_author)
+    comment.save()
     #return render(request, "whatislife/detail.html")
-    return HttpResponseRedirect(reverse('whatislife:new_comment', args=(post.id)))
+    #return HttpResponseRedirect(reverse('whatislife:detail', args=(post.id)))
+    return HttpResponseRedirect(reverse('whatislife:index'))
     

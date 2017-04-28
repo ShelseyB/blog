@@ -1,11 +1,13 @@
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'whatislife/style.css' %}" />
+<script type = 'text/javascript' src = "{% static 'whatislife/Javascript.js' %}">
+ </script>
+<body>
+<h1 class = 'text_box'>What is Life?</h1>
+<h2 class = 'text_box'>A blog by Shelsey Brinkerhoff</h2>
 
-<h1>What is Life?</h1>
-<h2>A blog by Shelsey Brinkerhoff</h2>
-
-<p>Some things just shouldn't happen. That's when you say "What is life?!"</p>
+<p class = 'text_box'>Some things just shouldn't happen. That's when you say "What is life?!"</p>
 
 
 {% if latest_entry_list %}
@@ -18,4 +20,11 @@
     <p>No polls are available.</p>
 {% endif %}
 
-<p>You're viewing this page at {{ post.pub_date|date:"g:i a" }} </p>
+<form>
+    <p class = 'text_box'>What color would you like the font on this page?</p>
+    <input type = 'text' name = 'color'>
+    <button type = 'button' onclick="submitButton(this)">Submit</button>
+        
+    
+</form>
+
