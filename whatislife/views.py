@@ -36,6 +36,6 @@ def new_comment(request, entry_id):
     #comment = cls (post=post, comment_entry=comment_entry, pub_date=pub_date, comment_author=comment_author)
     comment.save()
     #return render(request, "whatislife/detail.html")
-    #return HttpResponseRedirect(reverse('whatislife:detail', args=(post.id)))
-    return HttpResponseRedirect(reverse('whatislife:index'))
+    return HttpResponseRedirect(reverse('whatislife:detail', args=(entry_id)))
+    #return HttpResponseRedirect(reverse('whatislife:index'))
     
