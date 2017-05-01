@@ -1,7 +1,10 @@
+<head>
+
 {% load staticfiles %}
 
 <link rel="stylesheet" type="text/css" href="{% static 'whatislife/style.css' %}" />
-
+</head>
+<body>
 <h1 id = 'text_box'>{{ entry.entry_title }}</h1>
 <p id = 'text_box'>Posted at {{ entry.pub_date}}</p>
 <p id = 'text_box'>{{entry.post_entry}}</p>
@@ -26,3 +29,4 @@
     <input id="comment_entry" type="text" name = "comment_entry">
     <input type="submit" value="OK">
 </form>
+</body>
